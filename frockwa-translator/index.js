@@ -1,14 +1,12 @@
 function englishToFrockwa() {
     var input = document.getElementById("english").value;
-    //convert to lower case
-    input = input.toLowerCase();
     //next, we want to insert spaces between punctuation and non-letter characters
     var inputWithSpacesInserted = "";
     var chars = input.split("");
     for (let i in chars) {
-        if (chars[i].match(/[^a-zA-Z]+/g)) {
+        if (chars[i].match(/[^a-z]+/g)) {
             inputWithSpacesInserted += " ";
-        } else if (chars[i-1] && chars[i - 1].match(/[^a-zA-Z]+/g)) {
+        } else if (chars[i - 1] && chars[i - 1].match(/[^a-z]+/g)) {
             inputWithSpacesInserted += " ";
         }
         inputWithSpacesInserted += chars[i]
