@@ -4,10 +4,14 @@ function englishToFrockwa() {
     var inputWithSpacesInserted = "";
     var chars = input.split("");
     for (let i in chars) {
-        console.log(chars[i].match(/[A-Z]+/g))
+        var capitalLetterAtStartOfWord;
+        if(chars[i - 2]) {
+            capitalLetterAtStartOfWord = chars[i - 1].match(/[A-Z]+/g) && chars[i - 2] == " " ? true : false;
+        }
+        
         if (chars[i].match(/[^a-z]+/g)) {
             inputWithSpacesInserted += " ";
-        } else if (chars[i - 1] && chars[i - 1].match(/[^a-z]+/g) && (!chars[i - 1].match(/[A-Z]+/g) && chars[i - 2] != " ")) {
+        } else if (chars[i - 1] && chars[i - 1].match(/[^a-z]+/g) && !capitalLetterAtStartOfWord) {
             inputWithSpacesInserted += " ";
         }
         inputWithSpacesInserted += chars[i]
